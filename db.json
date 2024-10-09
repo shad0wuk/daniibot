@@ -1,0 +1,918 @@
+{
+  "members": {
+    "Ahin": {
+      "group": "MOMOLAND",
+      "id": "779839197262643221"
+    },
+    "Ahyeon": {
+      "group": "BABYMONSTER",
+      "id": "1058790666467033088"
+    },
+    "Aisha": {
+      "group": "EVERGLOW",
+      "id": "779823575707680799"
+    },
+    "Arin": {
+      "group": "OMG",
+      "id": "779835514534494208"
+    },
+    "Asa": {
+      "group": "BABYMONSTER",
+      "id": "1058790840836825118"
+    },
+    "BAE": {
+      "group": "NMIXX",
+      "id": "945907369043447829"
+    },
+    "Bahiyyih": {
+      "group": "Kep1er",
+      "id": "906298254675816558"
+    },
+    "Billlie": {
+      "id": "906302907614367774"
+    },
+    "Boeun": {
+      "group": "CLASS:y",
+      "id": "1000862052602093568"
+    },
+    "Bona": {
+      "group": "WJSN",
+      "id": "779844178963071007"
+    },
+    "Candy Shop": {
+      "id": "1254265329182310411"
+    },
+    "Chaehyun": {
+      "group": "Kep1er",
+      "id": "906297933039812608"
+    },
+    "Chaeryeong": {
+      "group": "ITZY",
+      "id": "779825044066271262"
+    },
+    "Chaewon": [
+      {
+        "group": "CLASS:y",
+        "id": "1000860647560581240"
+      },
+      {
+        "group": "LE SSERAFIM",
+        "id": "779826916328472627"
+      },
+      {
+        "group": "tripleS",
+        "id": "1290533811834060881"
+      }
+    ],
+    "Chaeyeon": [
+      {
+        "group": "IZONE",
+        "id": "779826919863615488"
+      },
+      {
+        "group": "tripleS",
+        "id": "1000867801420009502"
+      }
+    ],
+    "Chaeyoung": [
+      {
+        "group": "fromis_9",
+        "id": "779847857078272092"
+      },
+      {
+        "group": "TWICE",
+        "id": "779825045413429259"
+      }
+    ],
+    "Cheng Xiao": {
+      "group": "WJSN",
+      "id": "779844961612464129"
+    },
+    "Chiquita": {
+      "group": "BABYMONSTER",
+      "id": "1058790681939804221"
+    },
+    "Choerry": {
+      "group": "ARTMS",
+      "id": "779827829633843223"
+    },
+    "Chowon": {
+      "group": "LIGHTSUM",
+      "id": "842613426760056877"
+    },
+    "Chungha": {
+      "id": "779869669275598848"
+    },
+    "Chuu": {
+      "group": "LOONA",
+      "id": "779828161319534595"
+    },
+    "Cignature": {
+      "id": "779866230524739584"
+    },
+    "CSR": {
+      "id": "1051926448589512864"
+    },
+    "Dahyun": [
+      {
+        "group": "RcPc",
+        "id": "779816698965655583"
+      },
+      {
+        "group": "TWICE",
+        "id": "779824927611682836"
+      }
+    ],
+    "Dami": {
+      "group": "Dreamcatcher",
+      "id": "809565815476060211"
+    },
+    "Danielle": {
+      "group": "NewJeans",
+      "id": "1000865551020740629"
+    },
+    "Dawon": {
+      "group": "WJSN",
+      "id": "825604064720977931"
+    },
+    "Dayeon": {
+      "group": "Kep1er",
+      "id": "906300209565417542"
+    },
+    "Dayoung": {
+      "group": "WJSN",
+      "id": "780147579391836160"
+    },
+    "Dosie": {
+      "group": "Purple Kiss",
+      "id": "1003189261857738843"
+    },
+    "Dreamnote": {
+      "id": "779873422503051264"
+    },
+    "EU": {
+      "group": "EVERGLOW",
+      "id": "779818840074092614"
+    },
+    "Eunbi": {
+      "group": "IZONE",
+      "id": "779826915627761686"
+    },
+    "Eunchae": {
+      "group": "LE SSERAFIM",
+      "id": "961353302921068614"
+    },
+    "Eunha": {
+      "group": "VIVIZ",
+      "id": "779834000327180319"
+    },
+    "Eunseo": {
+      "group": "WJSN",
+      "id": "779844835061923901"
+    },
+    "Exy": {
+      "group": "WJSN",
+      "id": "779844261683789845"
+    },
+    "Gaeul": {
+      "group": "IVE",
+      "id": "916036962694090792"
+    },
+    "Gahyun": {
+      "group": "Dreamcatcher",
+      "id": "779849462499508254"
+    },
+    "Giselle": {
+      "group": "Aespa",
+      "id": "779818212233576510"
+    },
+    "Gowon": {
+      "group": "Loossemble",
+      "id": "779828668125020180"
+    },
+    "Gyuri": {
+      "group": "fromis_9",
+      "id": "779847395076341800"
+    },
+    "H1-KEY": {
+      "id": "1000867359914991718"
+    },
+    "Haerin": {
+      "group": "NewJeans",
+      "id": "1000866108028493954"
+    },
+    "Haewon": {
+      "group": "NMIXX",
+      "id": "945905738285469757"
+    },
+    "Handong": {
+      "group": "Dreamcatcher",
+      "id": "779874187908743178"
+    },
+    "Hanni": {
+      "group": "NewJeans",
+      "id": "1000863360776147054"
+    },
+    "Haseul": {
+      "group": "ARTMS",
+      "id": "779827239729496076"
+    },
+    "Hayoung": {
+      "group": "fromis_9",
+      "id": "779847039017943101"
+    },
+    "Heejin": {
+      "group": "ARTMS",
+      "id": "779826601905881088"
+    },
+    "Hikaru": {
+      "group": "Kep1er",
+      "id": "906301530481762324"
+    },
+    "Hwasa": {
+      "group": "MAMAMOO",
+      "id": "779850312239808542"
+    },
+    "Hyein": {
+      "group": "NewJeans",
+      "id": "1000866639727829103"
+    },
+    "Hyeju": [
+      {
+        "group": "CLASSY",
+        "id": "1000860126724493444"
+      },
+      {
+        "group": "Loossemble",
+        "id": "779828876351111218"
+      }
+    ],
+    "Hyewon": {
+      "group": "IZONE",
+      "id": "779830005642821634"
+    },
+    "Hyunbin": {
+      "group": "TRI.BE",
+      "id": "868170363899625482"
+    },
+    "Hyungseo": {
+      "group": "CLASS:y",
+      "id": "1000862576055427173"
+    },
+    "Hyunjin": {
+      "group": "Loossemble",
+      "id": "779826921613426708"
+    },
+    "ICHILLIN": {
+      "id": "1005395368843956304"
+    },
+    "Irene": {
+      "group": "Red Velvet",
+      "id": "779833011196788736"
+    },
+    "Iroha": {
+      "group": "ILLIT",
+      "id": "1147390265166930001"
+    },
+    "Isa": {
+      "group": "StayC",
+      "id": "779822396831301643"
+    },
+    "IU": {
+      "id": "779823163465793546"
+    },
+    "izna": {
+      "id": "1258452835566358568"
+    },
+    "J": {
+      "group": "StayC",
+      "id": "779822389647114271"
+    },
+    "Jaehee": {
+      "group": "Weeekly",
+      "id": "779823018968219651"
+    },
+    "Jeewon": {
+      "group": "CIGNATURE",
+      "id": "970868690402816011"
+    },
+    "Jennie": {
+      "group": "BLACKPINK",
+      "id": "779830218889625622"
+    },
+    "Jeongyeon": {
+      "group": "TWICE",
+      "id": "779823848451211275"
+    },
+    "Jia": {
+      "group": "TRI.BE",
+      "id": "868170522649841694"
+    },
+    "Jihan": {
+      "group": "Weeekly",
+      "id": "779823020326912010"
+    },
+    "Jiheon": {
+      "group": "fromis_9",
+      "id": "779848199434797097"
+    },
+    "Jihyo": {
+      "group": "TWICE",
+      "id": "779824234007494656"
+    },
+    "Jimin": {
+      "group": "CLASS:y",
+      "id": "1000861170552541297"
+    },
+    "Jini": {
+      "group": "NMIXX",
+      "id": "945906614341349416"
+    },
+    "Jinsoul": {
+      "group": "ARTMS",
+      "id": "779829455219851302"
+    },
+    "Jisoo": {
+      "group": "BLACKPINK",
+      "id": "779832209187274764"
+    },
+    "Jisun": {
+      "group": "fromis_9",
+      "id": "779847665109434369"
+    },
+    "Jiu": {
+      "group": "Dreamcatcher",
+      "id": "779877813679030303"
+    },
+    "Jiwon": {
+      "group": "fromis_9",
+      "id": "779847575711776809"
+    },
+    "Jiwoo": [
+      {
+        "group": "NMIXX",
+        "id": "945907571464757298"
+      },
+      {
+        "group": "tripleS",
+        "id": "1090716716939628559"
+      }
+    ],
+    "Jiyeon": {
+      "group": "tripleS",
+      "id": "1260018660031074424"
+    },
+    "Joonie": {
+      "group": "ICHILLIN",
+      "id": "1222628857304322239"
+    },
+    "Joy": {
+      "group": "Red Velvet",
+      "id": "779833362134073364"
+    },
+    "Julie": {
+      "group": "KISS OF LIFE",
+      "id": "1234943239556169789"
+    },
+    "Juri": {
+      "group": "RcPc",
+      "id": "779816675667214357"
+    },
+    "Kaede": {
+      "group": "tripleS",
+      "id": "1193016480795721829"
+    },
+    "Karina": {
+      "group": "Aespa",
+      "id": "779818210375106610"
+    },
+    "Kazuha": {
+      "group": "LE SSERAFIM",
+      "id": "961642896224837722"
+    },
+    "Kelly": {
+      "group": "TRI.BE",
+      "id": "818404437919793183"
+    },
+    "Kim Lip": {
+      "group": "ARTMS",
+      "id": "779827650725675018"
+    },
+    "KISS OF LIFE": {
+      "id": "1128074420360065166"
+    },
+    "Kotoko": {
+      "group": "UNIS",
+      "id": "1290534046685724722"
+    },
+    "Kyujin": {
+      "group": "NMIXX",
+      "id": "945907846434922566"
+    },
+    "LAPILLUS": {
+      "id": "988290184812585011"
+    },
+    "Leeseo": {
+      "group": "IVE",
+      "id": "916036671412273283"
+    },
+    "Lia": {
+      "group": "ITZY",
+      "id": "779825044984823860"
+    },
+    "LIGHTSUM": {
+      "id": "842614831269806120"
+    },
+    "Lily": {
+      "group": "NMIXX",
+      "id": "945906099696042006"
+    },
+    "Lisa": {
+      "group": "BLACKPINK",
+      "id": "779832401655889940"
+    },
+    "Liz": {
+      "group": "IVE",
+      "id": "916036552327594005"
+    },
+    "Lucy": {
+      "group": "woo!ah!",
+      "id": "798064388161536070"
+    },
+    "Luda": {
+      "group": "WJSN",
+      "id": "779844645156683846"
+    },
+    "MADEIN": {
+      "id": "1074792475912327169"
+    },
+    "Mashiro": {
+      "group": "MADEIN",
+      "id": "906302029301944321"
+    },
+    "MEOVV": {
+      "id": "1274262829024808981"
+    },
+    "Mia": {
+      "group": "EVERGLOW",
+      "id": "779819834174734336"
+    },
+    "Mimi": {
+      "group": "OMG",
+      "id": "797538701789626378"
+    },
+    "Mina": {
+      "group": "TWICE",
+      "id": "779824359057522698"
+    },
+    "Minji": {
+      "group": "NewJeans",
+      "id": "1000863945084653628"
+    },
+    "Minju": [
+      {
+        "group": "ILLIT",
+        "id": "1147390015341596712"
+      },
+      {
+        "group": "IZONE",
+        "id": "779826918568361984"
+      }
+    ],
+    "Minnie": {
+      "group": "G-IDLE",
+      "id": "779856689943281694"
+    },
+    "Minseo": {
+      "group": "woo!ah!",
+      "id": "798064761929072651"
+    },
+    "Mire": {
+      "group": "TRI.BE",
+      "id": "868170582779367475"
+    },
+    "Miyeon": {
+      "group": "G-IDLE",
+      "id": "779856224618938438"
+    },
+    "Moka": {
+      "group": "ILLIT",
+      "id": "1147390143980908584"
+    },
+    "Momo": {
+      "group": "TWICE",
+      "id": "779823413513814027"
+    },
+    "Monday": {
+      "group": "Weeekly",
+      "id": "779823016581791774"
+    },
+    "Nakyoung": {
+      "group": "tripleS",
+      "id": "1221925113029464094"
+    },
+    "Nakyung": {
+      "group": "fromis_9",
+      "id": "779848040235794443"
+    },
+    "Nana": {
+      "group": "woo!ah!",
+      "id": "785670300171894844"
+    },
+    "Nancy": {
+      "group": "MOMOLAND",
+      "id": "779808180514586635"
+    },
+    "Natty": {
+      "group": "KISS OF LIFE",
+      "id": "1120221524029349890"
+    },
+    "Nayeon": {
+      "group": "TWICE",
+      "id": "779824162382282784"
+    },
+    "Nayoung": {
+      "group": "LIGHTSUM",
+      "id": "1000858915921215648"
+    },
+    "NingNing": {
+      "group": "Aespa",
+      "id": "779818215735033878"
+    },
+    "NiziU": {
+      "id": "1169832169364013137"
+    },
+    "Onda": {
+      "group": "EVERGLOW",
+      "id": "779823847582859294"
+    },
+    "Pharita": {
+      "group": "BABYMONSTER",
+      "id": "1058790432206766080"
+    },
+    "PIXY": {
+      "id": "815450910519459852"
+    },
+    "Purple Kiss": {
+      "id": "842614764962447370"
+    },
+    "QWER": {
+      "id": "1195411393143386204"
+    },
+    "Rami": {
+      "group": "BABYMONSTER",
+      "id": "1058790158406795324"
+    },
+    "Rei": {
+      "group": "IVE",
+      "id": "916037195649929216"
+    },
+    "RESCENE": {
+      "id": "1234020371355795507"
+    },
+    "Riwon": {
+      "group": "CLASS:y",
+      "id": "1000859597759856680"
+    },
+    "Rora": {
+      "group": "BABYMONSTER",
+      "id": "1058790584241881238"
+    },
+    "Rose": {
+      "group": "BLACKPINK",
+      "id": "779830417112432680"
+    },
+    "Ruka": {
+      "group": "BABYMONSTER",
+      "id": "1058791512818847814"
+    },
+    "Ryujin": {
+      "group": "ITZY",
+      "id": "779820176127557632"
+    },
+    "Saerom": {
+      "group": "fromis_9",
+      "id": "779847277455081533"
+    },
+    "Sakura": {
+      "group": "LE SSERAFIM",
+      "id": "779823846815039488"
+    },
+    "Sana": {
+      "group": "TWICE",
+      "id": "779823328889536512"
+    },
+    "Sangah": {
+      "group": "LIGHTSUM",
+      "id": "1000858352139653282"
+    },
+    "Secret Number": {
+      "id": "779874407098613841"
+    },
+    "Seeun": {
+      "group": "StayC",
+      "id": "779822398719000607"
+    },
+    "Sejeong": {
+      "group": "Gugudan",
+      "id": "779846589510058044"
+    },
+    "Seola": {
+      "group": "WJSN",
+      "id": "820183171693412352"
+    },
+    "Seonyou": {
+      "group": "CLASS:y",
+      "id": "1000863010442723418"
+    },
+    "Seoyeon": [
+      {
+        "group": "fromis_9",
+        "id": "779847756138807298"
+      },
+      {
+        "group": "tripleS",
+        "id": "1141805269978980452"
+      }
+    ],
+    "Seulgi": {
+      "group": "Red Velvet",
+      "id": "779833124821270548"
+    },
+    "Sheon": {
+      "group": "Billlie",
+      "id": "941894587830661161"
+    },
+    "Shuhua": {
+      "group": "G-IDLE",
+      "id": "779857250381987860"
+    },
+    "Sieun": {
+      "group": "StayC",
+      "id": "779822395547844659"
+    },
+    "Sihyeon": {
+      "group": "EVERGLOW",
+      "id": "779824630202368011"
+    },
+    "SinB": {
+      "group": "VIVIZ",
+      "id": "779834908859695124"
+    },
+    "Siyeon": {
+      "group": "Dreamcatcher",
+      "id": "779849307750793218"
+    },
+    "Soeun": [
+      {
+        "group": "TRI.BE",
+        "id": "868170429821513769"
+      },
+      {
+        "group": "Weeekly",
+        "id": "779823018070376488"
+      }
+    ],
+    "Sohyun": {
+      "group": "tripleS",
+      "id": "1099099767402934272"
+    },
+    "Solar": {
+      "group": "MAMAMOO",
+      "id": "779849921545109544"
+    },
+    "Somi": {
+      "id": "779823021812613141"
+    },
+    "Songsun": {
+      "group": "TRI.BE",
+      "id": "809565207449174036"
+    },
+    "Soobin": {
+      "group": "WJSN",
+      "id": "825604227316449290"
+    },
+    "Soojin": {
+      "group": "Weeekly",
+      "id": "779823009485553664"
+    },
+    "Sora": {
+      "group": "woo!ah!",
+      "id": "798063947974049812"
+    },
+    "Soyeon": {
+      "group": "G-IDLE",
+      "id": "779857001697771520"
+    },
+    "SuA": {
+      "group": "Dreamcatcher",
+      "id": "779848835190620171"
+    },
+    "Sullyoon": {
+      "group": "NMIXX",
+      "id": "945906385596588042"
+    },
+    "Sumin": {
+      "group": "StayC",
+      "id": "779822392359911425"
+    },
+    "Sunmi": {
+      "id": "779851132985933875"
+    },
+    "Suyun": {
+      "group": "RcPc",
+      "id": "779816690380832768"
+    },
+    "Swan": {
+      "group": "Purple Kiss",
+      "id": "1003188612109713408"
+    },
+    "Taeyeon": {
+      "group": "SNSD",
+      "id": "779839820339085322"
+    },
+    "Takara": {
+      "group": "Busters",
+      "id": "1090309281691226112"
+    },
+    "tripleS": {
+      "id": "1000868080911646861"
+    },
+    "Tsuki": {
+      "group": "Billlie",
+      "id": "970867695090282558"
+    },
+    "Tzuyu": {
+      "group": "TWICE",
+      "id": "779825531977728017"
+    },
+    "Umji": {
+      "group": "VIVIZ",
+      "id": "779834986361520138"
+    },
+    "UNIS": {
+      "id": "1224066003651133682"
+    },
+    "Vivi": {
+      "group": "Loossemble",
+      "id": "779827501475561472"
+    },
+    "Wendy": {
+      "group": "Red Velvet",
+      "id": "779833268203028490"
+    },
+    "Winter": {
+      "group": "Aespa",
+      "id": "779818213936332811"
+    },
+    "Wonhee": {
+      "group": "ILLIT",
+      "id": "1147389678413168720"
+    },
+    "Woni": {
+      "group": "RESCENE",
+      "id": "1290533578442145802"
+    },
+    "Wonyoung": {
+      "group": "IVE",
+      "id": "779808234239557662"
+    },
+    "Wooyeon": {
+      "group": "woo!ah!",
+      "id": "798063140298293298"
+    },
+    "Xiaoting": {
+      "group": "Kep1er",
+      "id": "906302191852200057"
+    },
+    "Xinyu": {
+      "group": "tripleS",
+      "id": "1144754742661226556"
+    },
+    "Yeji": {
+      "group": "ITZY",
+      "id": "779825042695520288"
+    },
+    "Yeju": {
+      "group": "ICHILLIN",
+      "id": "1234942385897734245"
+    },
+    "Yel": {
+      "group": "H1-KEY",
+      "id": "1074613959266664479"
+    },
+    "Yena": {
+      "group": "IZONE",
+      "id": "779828194340634625"
+    },
+    "Yeojin": {
+      "group": "Loossemble",
+      "id": "779827362815672431"
+    },
+    "Yeonhee": {
+      "group": "RcPc",
+      "id": "779808449251770378"
+    },
+    "Yeonji": {
+      "group": "tripleS",
+      "id": "1234942669751455846"
+    },
+    "Yeoreum": {
+      "group": "WJSN",
+      "id": "779845071574794251"
+    },
+    "Yeri": {
+      "group": "Red Velvet",
+      "id": "779833497438388234"
+    },
+    "Yeseo": {
+      "group": "MADEIN",
+      "id": "906301154407907358"
+    },
+    "Yiren": {
+      "group": "EVERGLOW",
+      "id": "779812170472095764"
+    },
+    "Yooa": {
+      "group": "OMG",
+      "id": "779835650902851634"
+    },
+    "Yoohyeon": {
+      "group": "Dreamcatcher",
+      "id": "779870866862243840"
+    },
+    "Yoon": {
+      "group": "StayC",
+      "id": "779822399758532608"
+    },
+    "Yooyeon": {
+      "group": "tripleS",
+      "id": "1079677939878219826"
+    },
+    "Youngeun": {
+      "group": "Kep1er",
+      "id": "906300722956611624"
+    },
+    "Yubin": [
+      {
+        "group": "OMG",
+        "id": "779836549772345375"
+      },
+      {
+        "group": "tripleS",
+        "id": "1141805462996664351"
+      }
+    ],
+    "Yujin": [
+      {
+        "group": "IVE",
+        "id": "779826918480281631"
+      },
+      {
+        "group": "Kep1er",
+        "id": "779840775277641779"
+      }
+    ],
+    "Yuju": {
+      "group": "GFRIEND",
+      "id": "779834837418770492"
+    },
+    "Yuki": {
+      "group": "Purple Kiss",
+      "id": "842613003908153414"
+    },
+    "Yuna": {
+      "group": "ITZY",
+      "id": "779824620404473866"
+    },
+    "Yunah": {
+      "group": "ILLIT",
+      "id": "1147390366417436683"
+    },
+    "Yunjin": {
+      "group": "LE SSERAFIM",
+      "id": "962006315935338606",
+      "channel_id": "1293361361933570110"
+    },
+    "Yunkyoung": {
+      "group": "RcPc",
+      "id": "779816692309950516"
+    },
+    "Yuqi": {
+      "group": "G-IDLE",
+      "id": "779857131893030932"
+    },
+    "Yuri": {
+      "group": "IZONE",
+      "id": "779826917166940162"
+    },
+    "Yves": {
+      "group": "LOONA",
+      "id": "779827944658567189"
+    },
+    "Zoa": {
+      "group": "Weeekly",
+      "id": "779823021279150111"
+    }
+  }
+}

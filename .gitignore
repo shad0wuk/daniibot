@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Temporary files
+temp/
+
+# Configuration files that may contain sensitive information
+config.json
+
+# Logs (if you decide to create any)
+*.log
+
+# Environment variable files (if you use dotenv)
+.env
+
+# Optional: Backup files or old versions
+old_app.js
