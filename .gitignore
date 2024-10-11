@@ -6,6 +6,7 @@ temp/
 
 # Configuration files that may contain sensitive information
 config.json
+db_test.json
 
 # Logs (if you decide to create any)
 *.log
