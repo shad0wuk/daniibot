@@ -129,13 +129,35 @@ async function sendMediaForRole(roleId, mediaUrls) {
     }
 }
 
-// Function to send media to the specified channel
+// Function to split a message into chunks under 2000 characters
+function splitMessageIntoChunks(message, maxLength = 2000) {
+    let chunks = [];
+    let currentChunk = "";
+
+    for (const line of message.split('\n')) {
+        if (currentChunk.length + line.length + 1 > maxLength) {
+            chunks.push(currentChunk);
+            currentChunk = line;
+        } else {
+            currentChunk += (currentChunk ? '\n' : '') + line;
+        }
+    }
+
+    if (currentChunk) chunks.push(currentChunk); // Add any remaining content
+    return chunks;
+}
+
+// Updated function to send media to the specified channel
 async function sendMediaToChannel(channelId, mediaUrls) {
     const idolChannel = await client.channels.fetch(channelId);
     if (idolChannel) {
         if (mediaUrls.length > 0) {
-            // Send all media URLs as a single message
-            await idolChannel.send(mediaUrls.join('\n')); // Send links as a single message
+            const message = mediaUrls.join('\n'); // Join URLs into a single message
+            const messageChunks = splitMessageIntoChunks(message); // Split the message into chunks
+
+            for (const chunk of messageChunks) {
+                await idolChannel.send(chunk); // Send each chunk
+            }
         }
     } else {
         console.log(`Channel ID ${channelId} not found.`);
