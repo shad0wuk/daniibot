@@ -147,16 +147,21 @@ function splitMessageIntoChunks(message, maxLength = 2000) {
     return chunks;
 }
 
-// Updated function to send media to the specified channel
+// Updated function to send media to the specified channel, limiting 5 links per message
 async function sendMediaToChannel(channelId, mediaUrls) {
     const idolChannel = await client.channels.fetch(channelId);
     if (idolChannel) {
         if (mediaUrls.length > 0) {
-            const message = mediaUrls.join('\n'); // Join URLs into a single message
-            const messageChunks = splitMessageIntoChunks(message); // Split the message into chunks
+            // Split mediaUrls into batches of 5 links each
+            const urlBatches = [];
+            while (mediaUrls.length) {
+                urlBatches.push(mediaUrls.splice(0, 5));
+            }
 
-            for (const chunk of messageChunks) {
-                await idolChannel.send(chunk); // Send each chunk
+            // Send each batch as a separate message
+            for (const batch of urlBatches) {
+                const message = batch.join('\n'); // Join URLs into a single message (max 5 links)
+                await idolChannel.send(message); // Send each message containing up to 5 links
             }
         }
     } else {
@@ -164,6 +169,7 @@ async function sendMediaToChannel(channelId, mediaUrls) {
         await logMessage(`Channel ID ${channelId} not found.`); // Log the message
     }
 }
+
 
 // Function to log messages to the designated channel
 async function logMessage(message) {
