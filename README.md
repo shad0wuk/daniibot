@@ -96,9 +96,11 @@ npm install discord.js-selfbot-v13 axios bottleneck
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. You are free to use the code for personal and educational purposes, but you may not modify or distribute it.
 
-MIT License
+You must give appropriate credit when using the code, and you can find the full license details [here](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+See the full [LICENSE](./LICENSE) file for more details.
 
 Copyright (c) 2024 shad0wuk
 
