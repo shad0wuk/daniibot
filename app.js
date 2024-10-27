@@ -42,6 +42,9 @@ client.on('ready', async () => {
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return; // Ignore messages from bots
 
+    // Log the original message content for debugging purposes
+    // console.log("Original message content: ", message.content);
+
     // Check if the message is from the specified channel(s)
     if (!listenChannelIds.includes(message.channel.id)) return; // Exit if not from the desired channel
 
@@ -55,7 +58,11 @@ client.on('messageCreate', async (message) => {
         // Extract any links in the message content
         const linkRegex = /(https?:\/\/[^\s]+)/g; // Simple regex to find links
         const links = message.content.match(linkRegex);
-        if (links) mediaUrls.push(...links); // Add found links to mediaUrls
+        if (links) {
+            // Clean up URLs by trimming whitespace and any potential trailing '>'
+            const cleanLinks = links.map(link => link.trim().replace(/>$/, ''));
+            mediaUrls.push(...cleanLinks); // Add cleaned links to mediaUrls
+        }
     }
 
     try {
