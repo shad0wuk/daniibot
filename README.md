@@ -90,10 +90,6 @@ Install dependencies using:
 npm install discord.js-selfbot-v13 axios bottleneck
 ```
 
-## Disclaimer
-
-**Discord selfbots** are against Discord’s Terms of Service (ToS), and using a selfbot can result in your account being banned. This project is for educational purposes only, and the author takes no responsibility for any misuse.
-
 # License
 
 This project is licensed under the **GNU General Public License v3.0**. You are free to:
