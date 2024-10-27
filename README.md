@@ -94,15 +94,26 @@ npm install discord.js-selfbot-v13 axios bottleneck
 
 **Discord selfbots** are against Discord’s Terms of Service (ToS), and using a selfbot can result in your account being banned. This project is for educational purposes only, and the author takes no responsibility for any misuse.
 
-## License
+# License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. You are free to use the code for personal and educational purposes, but you may not modify or distribute it.
+This project is licensed under the **GNU General Public License v3.0**. You are free to:
 
-You must give appropriate credit when using the code, and you can find the full license details [here](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+- Use the software for any purpose
+- Study how the program works, and change it to make it do what you wish
+- Distribute copies of the original program
+- Distribute modified versions of the program under the same license
 
-See the full [LICENSE](./LICENSE) file for more details.
+## Conditions
 
-Copyright (c) 2024 shad0wuk
+1. If you modify the software and distribute it, you must distribute your modified version under the same license (GPL v3.0).
+2. You must include a copy of the license when you distribute the software.
+3. There is no warranty for the software; it is provided "as is".
+
+See the full [LICENSE](./LICENSE) file for more details or please refer to the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
+
+### Copyright Notice
+
+Copyright (C) 2024 shad0wuk
 
 ---
 
