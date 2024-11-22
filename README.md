@@ -30,7 +30,7 @@ Based on KPF.
 
 2. Install dependencies:
    ```bash
-   npm install
+   npm install discord.js-selfbot-v13 axios bottleneck fs path
    ```
 
 3. Create a `config.json` file in the root directory of the project, and add your bot token:
@@ -40,7 +40,7 @@ Based on KPF.
    }
    ```
 
-4. Edit `db.json` file to map idols to their corresponding roles and channels. Here’s an example structure:
+4. Use existing or edit `db.json` file to map idols to their corresponding roles and channels. Here’s an example structure:
    ```json
    {
        "members": {
@@ -87,7 +87,7 @@ Based on KPF.
 
 Install dependencies using:
 ```bash
-npm install discord.js-selfbot-v13 axios bottleneck
+npm install discord.js-selfbot-v13 axios bottleneck fs path
 ```
 
 # License
