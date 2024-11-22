@@ -45,6 +45,7 @@ Based on KPF.
    {
        "members": {
            "idol_name": {
+               "group": "GROUP_NAME",
                "id": "ROLE_ID",
                "channel_id": "CHANNEL_ID"
            }
@@ -74,7 +75,23 @@ Based on KPF.
    ```
 
 - **db.json**:
-   - Maps idols' roles to their associated Discord channels.
+   - Maps idols role IDs and channel IDs for the bot.
+   *For example:*
+   ```json
+   {
+      "members": {
+         "Rose": {
+            "group": "BLACKPINK",
+            "id": "779830417112432680",
+            "channel_id": "1293377326041530408"
+         },
+         "Somi": {
+            "id": "779823021812613141",
+            "channel_id": "1293376808665743422"
+         }
+       }
+   }
+   ```
 
 - **Rate Limiting**: The bot is configured to send no more than 35 requests per second to Discord's API. Discord API limit is 50.
 
