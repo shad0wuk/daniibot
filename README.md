@@ -24,8 +24,8 @@ Based on KPF.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/discord-selfbot.git
-   cd discord-selfbot
+   git clone https://github.com/shad0wuk/daniibot.git
+   cd daniibot
    ```
 
 2. Install dependencies:
@@ -54,7 +54,7 @@ Based on KPF.
 
 5. Start the bot:
    ```bash
-   node index.js
+   node app.js
    ```
 
 ## Usage
