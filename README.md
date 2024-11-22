@@ -77,6 +77,7 @@ Based on KPF.
 - **db.json**:
    - Maps idols role IDs and channel IDs for the bot.
    *For example:*
+
    ```json
    {
       "members": {
