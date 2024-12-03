@@ -29,6 +29,7 @@ fsPromises.mkdir(tempDir, { recursive: true }); // Create temp directory if it d
 
 // Initialize Bottleneck with a rate limit of 35 requests per second
 const Bottleneck = require('bottleneck'); // Import Bottleneck
+const { error } = require('console');
 const limiter = new Bottleneck({
     minTime: 1000 / 35 // 35 requests per second
 });
@@ -131,8 +132,19 @@ async function sendMediaForRole(roleId, mediaUrls) {
             await logMessage(`No channel found for member with role ID: ${roleId}`); // Log the message
         }
     } else {
-        console.log(`No idol found for role ID: ${roleId}`);
-        await logMessage(`No idol found for role ID: ${roleId}`); // Log the message
+        let errorMessage = `No idol found for role ID: ${roleId}`
+        if (mediaUrls.length > 0) {
+            errorMessage += `\nAttached media:`;
+            //split mediaUrls into chunks < 2000 chars
+            const mediaChunks = splitMessageIntoChunks(mediaUrls.join(`\n`), 2000 - errorMessage.length - 5);
+            for (const chunk of mediaChunks) {
+                await logMessage(`${errorMessage}\n${chunk}`);
+            }
+        } else {
+            console.log(errorMessage);
+            await logMessage(errorMessage);
+        }
+
     }
 }
 

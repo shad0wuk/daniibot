@@ -24,13 +24,13 @@ Based on KPF.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/discord-selfbot.git
-   cd discord-selfbot
+   git clone https://github.com/shad0wuk/daniibot.git
+   cd daniibot
    ```
 
 2. Install dependencies:
    ```bash
-   npm install
+   npm install discord.js-selfbot-v13 axios bottleneck fs path
    ```
 
 3. Create a `config.json` file in the root directory of the project, and add your bot token:
@@ -40,11 +40,12 @@ Based on KPF.
    }
    ```
 
-4. Edit `db.json` file to map idols to their corresponding roles and channels. Here’s an example structure:
+4. Use existing or edit `db.json` file to map idols to their corresponding roles and channels. Here’s an example structure:
    ```json
    {
        "members": {
            "idol_name": {
+               "group": "GROUP_NAME",
                "id": "ROLE_ID",
                "channel_id": "CHANNEL_ID"
            }
@@ -54,7 +55,7 @@ Based on KPF.
 
 5. Start the bot:
    ```bash
-   node index.js
+   node app.js
    ```
 
 ## Usage
@@ -74,7 +75,24 @@ Based on KPF.
    ```
 
 - **db.json**:
-   - Maps idols' roles to their associated Discord channels.
+   - Maps idols role IDs and channel IDs for the bot.
+   *For example:*
+
+   ```json
+   {
+      "members": {
+         "Rose": {
+            "group": "BLACKPINK",
+            "id": "779830417112432680",
+            "channel_id": "1293377326041530408"
+         },
+         "Somi": {
+            "id": "779823021812613141",
+            "channel_id": "1293376808665743422"
+         }
+       }
+   }
+   ```
 
 - **Rate Limiting**: The bot is configured to send no more than 35 requests per second to Discord's API. Discord API limit is 50.
 
@@ -87,7 +105,7 @@ Based on KPF.
 
 Install dependencies using:
 ```bash
-npm install discord.js-selfbot-v13 axios bottleneck
+npm install discord.js-selfbot-v13 axios bottleneck fs path
 ```
 
 # License
