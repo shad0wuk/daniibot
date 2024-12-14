@@ -46,7 +46,7 @@
     },
     "Bona": {
       "group": "WJSN",
-      "id": "779844178963071007",
+      "id": "1313201273729716235",
       "channel_id": "1293380728851271771"
     },
     "Candy Shop": {
@@ -1156,104 +1156,129 @@
       "id": "1313201502982111272",
       "channel_id": "1313468402483986504"
     },
-"Haneul": {
+    "Haneul": {
       "group": "KISS OF LIFE",
       "id": "1313201379963310090",
       "channel_id": "1313469160390398042"
     },
-"Hayeon": {
+    "Hayeon": {
       "group": "tripleS",
       "id": "1313202769938878514",
       "channel_id": "1313464332209623060"
     },
-"Hyerin": {
+    "Hyerin": {
       "group": "tripleS",
       "id": "1313201695655989348",
       "channel_id": "1313613627504197713"
     },
-"Jeemin": {
-      "group": "izna",
+    "Jeemin": {
+       "group": "izna",
       "id": "1313200547309813790",
       "channel_id": "1313614343958429777"
     },
-"Jiyoon": {
+    "Jiyoon": {
       "group": "izna",
       "id": "1313200655141441637",
       "channel_id": "1313614317320667277"
     },
-"Joobin": {
+    "Joobin": {
       "group": "tripleS",
       "id": "1313202650367660082",
       "channel_id": "1313618273362907197"
     },
-"Jungeun": {
+    "Jungeun": {
       "group": "izna",
       "id": "1313200980535541800",
       "channel_id": "1313614360970657862"
     },
-"Koko": {
+    "Koko": {
       "group": "izna",
       "id": "1313200778495660032",
       "channel_id": "1313618506373267496"
     },
-"Kotone": {
+    "Kotone": {
       "group": "tripleS",
       "id": "1313202358678847520",
       "channel_id": "1313613512567689247"
     },
-"Lynn": {
+    "Lynn": {
       "group": "tripleS",
       "id": "1313202552560685088",
       "channel_id": "1313613536630673510"
     },
-"Mai": {
+    "Mai": {
       "group": "izna",
       "id": "1313200374227931217",
       "channel_id": "1313618459631816815"
     },
-"Mayu": {
+    "Mayu": {
       "group": "tripleS",
       "id": "1313202458776043661",
       "channel_id": "1313618259962232843"
     },
-"Nien": {
+    "Nien": {
       "group": "tripleS",
       "id": "1313202226935762944",
       "channel_id": "1313613474466758676"
     },
-"Saebi": {
+    "Saebi": {
       "group": "izna",
       "id": "1313201087733436456",
       "channel_id": "1313614330968674314"
     },
-"Sarang": {
+    "Sarang": {
       "group": "izna",
       "id": "1313200867117240360",
       "channel_id": "1313618426304139284"
     },
-"Seoah": {
+    "Seoah": {
       "group": "tripleS",
       "id": "1313203127486517308",
       "channel_id": "1313618243210051605"
     },
-"Shion": {
+    "Shion": {
       "group": "tripleS",
       "id": "1313202891506323526",
       "channel_id": "1313613680109158431"
     },
-"Soomin": {
+    "Soomin": {
       "group": "tripleS",
       "id": "1313201946873823233",
       "channel_id": "1313613439691653251"
     },
-"Sullin": {
+    "Sullin": {
       "group": "tripleS",
       "id": "1313203026571300915",
       "channel_id": "1313613654817505302"
     },
-"YOUNG POSSE": {
+    "YOUNG POSSE": {
       "id": "1313203803184562389",
       "channel_id": "1313593238438936708"
+    },
+    "Anna": {
+      "group": "MEOVV",
+      "id": "1313203280788193350",
+      "channel_id": ""
+    },
+    "Narin": {
+      "group": "MEOVV",
+      "id": "1313203395380903966",
+      "channel_id": ""
+    },
+    "Sooin": {
+      "group": "MEOVV",
+      "id": "1313203493133221981",
+      "channel_id": ""
+    },
+    "Gawon": {
+      "group": "MEOVV",
+      "id": "1313203585055457311",
+      "channel_id": ""
+    },
+    "Ella": {
+      "group": "MEOVV",
+      "id": "1313203717872549979",
+      "channel_id": ""
     }
   }
 }
