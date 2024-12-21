@@ -211,4 +211,15 @@ async function logError(error) {
 }
 
 // Log in using the token from config.json
-client.login(botToken);
+client.login(botToken)
+    .then(() => {
+        console.log("Token is valid. Bot logging in...");
+    })
+    .catch((error) => {
+        if (error.code === 'TOKEN_INVALID') {
+            console.error("Error: The provided bot token is invalid. Please check your config.json file.");
+        } else {
+            console.error("An unexpected error occurred while logging in:", error.message);
+        }
+        process.exit(1); // Exit the application with an error code
+    });
