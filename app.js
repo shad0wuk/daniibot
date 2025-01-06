@@ -7,6 +7,7 @@ const fsPromises = fs.promises; // Use fs.promises for promise-based file system
 // Load the bot token from the config file
 const config = JSON.parse(fs.readFileSync('config.json', 'utf8')); // Load config.json
 const botToken = config.token; // Extract the bot token
+const webhookUrl = config.webhook_url;
 
 // Load the JSON file containing idol data
 const idols = JSON.parse(fs.readFileSync('db.json', 'utf8'));
@@ -210,6 +211,29 @@ async function logError(error) {
     }
 }
 
+// Function to send error messages to the webhook and mention your profile
+async function sendErrorToWebhook(errorMessage) {
+    try {
+        if (!webhookUrl) {
+            console.error("Webhook URL is not defined in config.json");
+            return;
+        }
+
+        // Format the message to include a mention of your Discord profile
+        const mentionUserId = '804998887131578379'; // Your Discord user ID
+        const messageContent = `<@${mentionUserId}> **Error Notification:**\n${errorMessage}`;
+
+        await axios.post(webhookUrl, {
+            content: messageContent, // Include the mention in the content
+            username: 'Error Logger' // This is overridden by the webhook settings in Discord
+        });
+        console.log("Error sent to webhook and mention added successfully.");
+    } catch (err) {
+        console.error("Failed to send error to webhook:", err.message);
+    }
+}
+
+
 // Log in using the token from config.json
 client.login(botToken)
     .then(() => {
@@ -217,9 +241,16 @@ client.login(botToken)
     })
     .catch((error) => {
         if (error.code === 'TOKEN_INVALID') {
-            console.error("Error: The provided bot token is invalid. Please check your config.json file.");
+            const errorMessage = "Error: The provided bot token is invalid. Please check your config.json file.";
+            console.error(errorMessage);
+
+            // Send error to the webhook
+            sendErrorToWebhook(errorMessage);
         } else {
             console.error("An unexpected error occurred while logging in:", error.message);
+
+            // Send unexpected errors to the webhook
+            sendErrorToWebhook(`An unexpected error occurred: ${error.message}`);
         }
         process.exit(1); // Exit the application with an error code
     });
