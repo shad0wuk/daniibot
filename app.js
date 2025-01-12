@@ -1,8 +1,12 @@
-const { Client, MessageAttachment } = require('discord.js-selfbot-v13'); // Import without GatewayIntentBits
-const fs = require('fs'); // Import the file system module
-const axios = require('axios'); // Import axios for making HTTP requests
-const path = require('path'); // Import path module for file handling
-const fsPromises = fs.promises; // Use fs.promises for promise-based file system operations
+import { Client, MessageAttachment } from 'discord.js-selfbot-v13'; // Import without GatewayIntentBits
+import fs from 'fs'; // Import the file system module
+import axios from 'axios'; // Import axios for making HTTP requests
+import path from 'path'; // Import path module for file handling
+import fetch from 'node-fetch'; // Import fetch module
+import { promises as fsPromises } from 'fs'; // Use fs.promises for promise-based file system operations
+import Bottleneck from 'bottleneck'; // Import Bottleneck
+import { error } from 'console'; // Destructure error from console
+import { fileURLToPath } from 'url'; // Import fileURLToPath
 
 // Load the bot token from the config file
 const config = JSON.parse(fs.readFileSync('config.json', 'utf8')); // Load config.json
@@ -24,13 +28,15 @@ const listenChannelIds = [
 const logChannelId = '1293355436782784543';
 
 // Create a temporary directory for storing images
-const tempDir = path.join(__dirname, 'temp');
+const __filename = fileURLToPath(import.meta.url); // Get the current file URL
+const __dirname = path.dirname(__filename); // Get the directory name
+
+const tempDir = path.join(__dirname, 'temp'); // Now you can use __dirname as in CommonJS
+
 
 fsPromises.mkdir(tempDir, { recursive: true }); // Create temp directory if it doesn't exist
 
 // Initialize Bottleneck with a rate limit of 35 requests per second
-const Bottleneck = require('bottleneck'); // Import Bottleneck
-const { error } = require('console');
 const limiter = new Bottleneck({
     minTime: 1000 / 35 // 35 requests per second
 });
@@ -190,7 +196,6 @@ async function sendMediaToChannel(channelId, mediaUrls) {
     }
 }
 
-
 // Function to log messages to the designated channel
 async function logMessage(message) {
     const logChannel = await client.channels.fetch(logChannelId);
@@ -211,46 +216,35 @@ async function logError(error) {
     }
 }
 
-// Function to send error messages to the webhook and mention your profile
 async function sendErrorToWebhook(errorMessage) {
     try {
-        if (!webhookUrl) {
-            console.error("Webhook URL is not defined in config.json");
-            return;
-        }
-
-        // Format the message to include a mention of your Discord profile
-        const mentionUserId = '804998887131578379'; // Your Discord user ID
+        const mentionUserId = '804998887131578379'; // Replace with your Discord user ID
         const messageContent = `<@${mentionUserId}> **Error Notification:**\n${errorMessage}`;
 
-        await axios.post(webhookUrl, {
-            content: messageContent, // Include the mention in the content
-            username: 'Error Logger' // This is overridden by the webhook settings in Discord
+        const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: messageContent }),
         });
-        console.log("Error sent to webhook and mention added successfully.");
+
+        if (response.ok) {
+            console.log("Webhook sent successfully!");
+        } else {
+            console.error("Failed to send webhook. Status:", response.status);
+        }
     } catch (err) {
-        console.error("Failed to send error to webhook:", err.message);
+        console.error("Failed to send message to webhook:", err.message);
     }
 }
 
-
-// Log in using the token from config.json
+// Attempt to log in
 client.login(botToken)
     .then(() => {
         console.log("Token is valid. Bot logging in...");
     })
     .catch((error) => {
-        if (error.code === 'TOKEN_INVALID') {
-            const errorMessage = "Error: The provided bot token is invalid. Please check your config.json file.";
-            console.error(errorMessage);
+        console.error("Error occurred during login:", error.message);
 
-            // Send error to the webhook
-            sendErrorToWebhook(errorMessage);
-        } else {
-            console.error("An unexpected error occurred while logging in:", error.message);
-
-            // Send unexpected errors to the webhook
-            sendErrorToWebhook(`An unexpected error occurred: ${error.message}`);
-        }
-        process.exit(1); // Exit the application with an error code
+        // Send the error message to the webhook
+        sendErrorToWebhook(`Error during login: ${error.message}`);
     });
