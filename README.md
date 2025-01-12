@@ -30,13 +30,15 @@ Based on KPF.
 
 2. Install dependencies:
    ```bash
-   npm install discord.js-selfbot-v13 axios bottleneck fs path
+   npm install discord.js-selfbot-v13 axios bottleneck fs path node
    ```
 
 3. Create a `config.json` file in the root directory of the project, and add your bot token:
    ```json
    {
-       "token": "YOUR_DISCORD_BOT_TOKEN"
+       "token": "BOT_TOKEN",
+       "webhook_url": "WEBHOOK_URL",
+       "mention_user_id": "MENTION_ID"
    }
    ```
 
@@ -70,7 +72,9 @@ Based on KPF.
 - **config.json**:
    ```json
    {
-       "token": "YOUR_DISCORD_BOT_TOKEN"
+       "token": "BOT_TOKEN",
+       "webhook_url": "WEBHOOK_URL",
+       "mention_user_id": "MENTION_ID"
    }
    ```
 
@@ -102,10 +106,11 @@ Based on KPF.
 - `axios`: For making HTTP requests (if needed in future enhancements).
 - `bottleneck`: To limit API request rates.
 - `fs` and `path`: File system and path utilities.
+- `node` for execution.
 
 Install dependencies using:
 ```bash
-npm install discord.js-selfbot-v13 axios bottleneck fs path
+npm install discord.js-selfbot-v13 axios bottleneck fs path node
 ```
 
 # License
