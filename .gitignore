@@ -15,5 +15,4 @@ db_test.json
 .env
 
 # Optional: Backup files or old versions
-old_app.js
 app_test.js
