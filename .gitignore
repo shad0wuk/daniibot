@@ -16,3 +16,20 @@ db_test.json
 
 # Optional: Backup files or old versions
 app_test.js
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.backup
+db.json.bak
