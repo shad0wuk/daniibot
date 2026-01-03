@@ -47,6 +47,12 @@ let roleCacheInitialized = false;
 const userLastRoleMap = new Map(); // userId -> { roleIds: [], timestamp: Date }
 const FOLLOW_UP_TIMEOUT = 5 * 60 * 1000; // 5 minutes
 
+// Track roles currently being processed to prevent race conditions
+const processingRoles = new Set();
+
+// Database write lock to prevent concurrent writes
+let dbWriteLock = Promise.resolve();
+
 client.on('ready', async () => {
     console.log(`${client.user.username} is ready!`);
     
@@ -82,6 +88,63 @@ client.on('ready', async () => {
     // Initialize role cache on startup
     await initializeRoleCache();
 });
+
+// Function to reload idols from db.json with proper error handling
+async function reloadIdols() {
+    try {
+        // Wait for any pending writes to complete
+        await dbWriteLock;
+        
+        const data = await fsPromises.readFile('db.json', 'utf8');
+        idols = JSON.parse(data);
+        console.log('✅ Reloaded idols database from file');
+        return true;
+    } catch (error) {
+        console.error('❌ Error reloading idols:', error);
+        await logError(error);
+        return false;
+    }
+}
+
+// Function to safely write to database with locking
+async function writeDatabase() {
+    // Chain the write operation to ensure sequential writes
+    dbWriteLock = dbWriteLock.then(async () => {
+        try {
+            // Create a backup first
+            const backupPath = 'db.json.backup';
+            await fsPromises.copyFile('db.json', backupPath).catch(() => {});
+            
+            // Write the updated data
+            await fsPromises.writeFile('db.json', JSON.stringify(idols, null, 2), 'utf8');
+            console.log('✅ Database written successfully');
+            
+            // Verify the write
+            const written = await fsPromises.readFile('db.json', 'utf8');
+            const parsed = JSON.parse(written);
+            
+            // Update in-memory copy to match what was written
+            idols = parsed;
+            
+            return true;
+        } catch (error) {
+            console.error('❌ Error writing database:', error);
+            await logError(error);
+            
+            // Try to restore from backup
+            try {
+                await fsPromises.copyFile('db.json.backup', 'db.json');
+                console.log('⚠️ Restored database from backup');
+            } catch (restoreError) {
+                console.error('❌ Failed to restore backup:', restoreError);
+            }
+            
+            return false;
+        }
+    });
+    
+    return dbWriteLock;
+}
 
 // Initialize role cache from ping-roles channel
 async function initializeRoleCache() {
@@ -189,6 +252,9 @@ client.on('messageCreate', async (message) => {
 
 // Function to send media to the specified role's channel
 async function sendMediaForRole(roleId, mediaUrls) {
+    // Reload idols to get latest data
+    await reloadIdols();
+    
     // Check if the role ID corresponds to an idol in the JSON members
     const memberData = Object.entries(idols.members).find(([name, member]) => {
         if (Array.isArray(member)) {
@@ -223,39 +289,53 @@ async function sendMediaForRole(roleId, mediaUrls) {
 
 // Handle unknown role by auto-creating channel and database entry
 async function handleUnknownRole(roleId, mediaUrls) {
-    console.log(`Unknown role ID detected: ${roleId}`);
-    
-    // Check if role cache is initialized
-    if (!roleCacheInitialized) {
-        await logMessage(`⚠️ Role cache not initialized yet for role ID: ${roleId}`);
-        await logUnknownRole(roleId, mediaUrls);
+    // Prevent duplicate processing
+    if (processingRoles.has(roleId)) {
+        console.log(`⏳ Role ${roleId} is already being processed, skipping...`);
         return;
     }
-
-    // Look up role name in cache
-    const roleName = roleCache.get(roleId);
     
-    if (!roleName) {
-        await logMessage(`⚠️ Role ID ${roleId} not found in ping-roles channel`);
-        await logUnknownRole(roleId, mediaUrls);
-        return;
-    }
-
-    console.log(`Found role name: ${roleName} for ID: ${roleId}`);
+    processingRoles.add(roleId);
     
     try {
+        console.log(`Unknown role ID detected: ${roleId}`);
+        
+        // Check if role cache is initialized
+        if (!roleCacheInitialized) {
+            await logMessage(`⚠️ Role cache not initialized yet for role ID: ${roleId}`);
+            await logUnknownRole(roleId, mediaUrls);
+            return;
+        }
+
+        // Look up role name in cache
+        const roleName = roleCache.get(roleId);
+        
+        if (!roleName) {
+            await logMessage(`⚠️ Role ID ${roleId} not found in ping-roles channel`);
+            await logUnknownRole(roleId, mediaUrls);
+            return;
+        }
+
+        console.log(`Found role name: ${roleName} for ID: ${roleId}`);
+        
         // Create new channel
         const newChannel = await createChannelForRole(roleName, roleId);
         
         if (newChannel) {
-            // Add to database
-            await addToDatabase(roleName, roleId, newChannel.id);
+            // Add to database and wait for it to complete
+            const success = await addToDatabase(roleName, roleId, newChannel.id);
             
-            // Send media to the new channel
-            await sendMediaToChannel(newChannel.id, mediaUrls);
-            
-            // Log success
-            await logMessage(`✅ Auto-created channel and database entry for: ${roleName}\nRole ID: ${roleId}\nChannel: <#${newChannel.id}>`);
+            if (success) {
+                console.log(`✅ Database updated successfully for ${roleName}`);
+                
+                // Send media to the new channel
+                await sendMediaToChannel(newChannel.id, mediaUrls);
+                
+                // Log success
+                await logMessage(`✅ Auto-created channel and database entry for: ${roleName}\nRole ID: ${roleId}\nChannel: <#${newChannel.id}>`);
+            } else {
+                await logMessage(`⚠️ Channel created but database update failed for: ${roleName}`);
+            }
         } else {
             await logUnknownRole(roleId, mediaUrls);
         }
@@ -263,6 +343,12 @@ async function handleUnknownRole(roleId, mediaUrls) {
         console.error('Error in handleUnknownRole:', error);
         await logError(error);
         await logUnknownRole(roleId, mediaUrls);
+    } finally {
+        // Remove from processing set after a longer delay to ensure everything completes
+        setTimeout(() => {
+            processingRoles.delete(roleId);
+            console.log(`✅ Finished processing role ${roleId}`);
+        }, 3000);
     }
 }
 
@@ -279,18 +365,27 @@ async function createChannelForRole(roleName, roleId) {
         }
 
         console.log(`Attempting to create channel in guild: ${guild.name} (${guild.id})`);
-        console.log(`My permissions:`, guild.members.cache.get(client.user.id)?.permissions.toArray());
 
-        // Format channel name (lowercase, replace spaces and brackets with hyphens)
+        // Format channel name - include group to make it unique
         const channelName = roleName
             .toLowerCase()
-            .replace(/[\[\]]/g, '-')
-            .replace(/\s+/g, '-')
-            .replace(/--+/g, '-')
-            .replace(/^-|-$/g, '');
+            .replace(/[\[\]]/g, '-')  // Replace brackets with hyphens
+            .replace(/\s+/g, '-')      // Replace spaces with hyphens
+            .replace(/--+/g, '-')      // Replace multiple hyphens with single
+            .replace(/^-|-$/g, '');    // Remove leading/trailing hyphens
 
         console.log(`Creating channel with name: ${channelName}`);
-        console.log(`Category ID: ${newChannelCategoryId}`);
+
+        // Check if channel already exists (fetch fresh from API, not cache)
+        const channels = await guild.channels.fetch();
+        const existingChannel = channels.find(ch => 
+            ch.name === channelName && ch.type === 'GUILD_TEXT'
+        );
+        
+        if (existingChannel) {
+            console.log(`⚠️ Channel ${channelName} already exists (${existingChannel.id}), using existing channel`);
+            return existingChannel;
+        }
 
         // Create the channel
         const newChannel = await guild.channels.create(channelName, {
@@ -300,6 +395,10 @@ async function createChannelForRole(roleName, roleId) {
         });
 
         console.log(`✅ Created new channel: ${newChannel.name} (${newChannel.id})`);
+        
+        // Small delay to ensure Discord API has processed the creation
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         return newChannel;
     } catch (error) {
         console.error('❌ Error creating channel:', error.message);
@@ -312,31 +411,89 @@ async function createChannelForRole(roleName, roleId) {
 // Add new entry to database
 async function addToDatabase(roleName, roleId, channelId) {
     try {
+        console.log(`\n📝 Adding to database: ${roleName} (${roleId}) -> ${channelId}`);
+        
         // Parse role name to extract group if present
         const groupMatch = roleName.match(/\[(.+?)\]/);
         const group = groupMatch ? groupMatch[1] : null;
         const cleanName = roleName.replace(/\s*\[.+?\]\s*/g, '').trim();
         
-        // Create new entry
-        const newEntry = {
-            id: roleId,
-            channel_id: channelId
-        };
+        console.log(`   Clean name: ${cleanName}${group ? ` [${group}]` : ''}`);
         
-        if (group) {
-            newEntry.group = group;
+        // Reload the latest database state
+        await reloadIdols();
+        
+        // Check if this idol already exists in the database
+        const existingEntry = idols.members[cleanName];
+        
+        if (existingEntry) {
+            console.log(`   Found existing entry for ${cleanName}`);
+            
+            // If it's already an array, add the new entry
+            if (Array.isArray(existingEntry)) {
+                // Check if this specific role ID already exists
+                const roleExists = existingEntry.find(entry => entry.id === roleId);
+                if (roleExists) {
+                    console.log(`   Role ID ${roleId} already exists, updating channel_id`);
+                    roleExists.channel_id = channelId;
+                } else {
+                    console.log(`   Adding new group entry to existing array`);
+                    const newEntry = {
+                        id: roleId,
+                        channel_id: channelId
+                    };
+                    if (group) newEntry.group = group;
+                    
+                    existingEntry.push(newEntry);
+                }
+            } else {
+                // Convert to array if it's a single entry and we're adding another
+                if (existingEntry.id !== roleId) {
+                    console.log(`   Converting ${cleanName} to array with multiple groups`);
+                    const newEntry = {
+                        id: roleId,
+                        channel_id: channelId
+                    };
+                    if (group) newEntry.group = group;
+                    
+                    idols.members[cleanName] = [existingEntry, newEntry];
+                } else {
+                    // Same role ID, just update channel
+                    console.log(`   Updating channel_id for existing single entry`);
+                    existingEntry.channel_id = channelId;
+                }
+            }
+        } else {
+            // Create new entry
+            console.log(`   Creating brand new entry for ${cleanName}`);
+            const newEntry = {
+                id: roleId,
+                channel_id: channelId
+            };
+            
+            if (group) {
+                newEntry.group = group;
+            }
+
+            idols.members[cleanName] = newEntry;
         }
 
-        // Add to idols object
-        idols.members[cleanName] = newEntry;
-
-        // Write to file
-        await fsPromises.writeFile('db.json', JSON.stringify(idols, null, 2), 'utf8');
+        // Write to file with locking
+        console.log(`   Writing to database file...`);
+        const writeSuccess = await writeDatabase();
         
-        console.log(`Added ${cleanName} to database`);
+        if (writeSuccess) {
+            console.log(`✅ Successfully saved ${cleanName} to database\n`);
+            return true;
+        } else {
+            console.error(`❌ Failed to write ${cleanName} to database\n`);
+            return false;
+        }
+        
     } catch (error) {
-        console.error('Error adding to database:', error);
+        console.error('❌ Error adding to database:', error);
         await logError(error);
+        return false;
     }
 }
 
