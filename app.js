@@ -14,9 +14,6 @@ const botToken = config.token;
 const webhookUrl = config.webhook_url;
 const mentionUserId = config.mention_user_id;
 
-// List of allowed bot IDs (if any) - only these bots will be processed, others will be ignored
-const allowedBotIds = config.allowed_bot_ids || [];
-
 // Load all channel and server IDs from config
 const listenChannelIds = config.listen_channel_ids;
 const logChannelId = config.log_channel_id;
@@ -188,7 +185,7 @@ async function initializeRoleCache() {
 
 // Message listener
 client.on('messageCreate', async (message) => {
-    if (message.author.bot && !allowedBotIds.includes(message.author.id)) return;
+    if (message.author.id === client.user.id) return;
 
     if (!listenChannelIds.includes(message.channel.id)) return;
 
